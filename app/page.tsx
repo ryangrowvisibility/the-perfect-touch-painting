@@ -1,4 +1,3 @@
-import Image from "next/image";
 import NavBar from "./components/NavBar";
 import HeroCTA from "./components/HeroCTA";
 import PhotoGallery from "./components/PhotoGallery";
@@ -35,8 +34,7 @@ const testimonials = [
     rating: 5,
     review:
       "I have used The Perfect Touch multiple times and every experience has been consistently excellent. Sara is professional, the finish is always clean, and they respect the space completely. This is the team I call without hesitation.",
-    photo:
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFrQO3F5MJJxbFIPqq6lXvGYVh4pCOL3MZNj45ZhNFevhqZlHd4CvWUyv4bkl3l8AiWf7-P0wJBvEtdSuZmr3qhRY_cYr4YgkLY=w400-h300-k-no",
+    photo: null,
   },
   {
     name: "Vera L.",
@@ -44,8 +42,7 @@ const testimonials = [
     rating: 5,
     review:
       "My kitchen cabinets look like they came from a showroom. The spray finish is flawless — not a single brush mark or drip. Sara was thorough during the consultation and Sean's work on application day was meticulous. I am absolutely thrilled with the result.",
-    photo:
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE4FXYoTfqYiFiBxIFd1YiY4cXoRk7-T8Mj55qT1FUj-C4-OfIjTPaHQ0UGmwAZ1w3yoGUb_44P8vVsqAYFu9B5CJ4Y3UgqATbv=w400-h300-k-no",
+    photo: null,
   },
   {
     name: "Andrew R.",
@@ -53,8 +50,7 @@ const testimonials = [
     rating: 5,
     review:
       "Sara and Sean treated my home with exceptional care. They were on time, tidy throughout the job, and the painting itself is pristine. Clean edges, even coverage, no touch-ups needed. Exactly what you want when you let someone into your home.",
-    photo:
-      "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHbUVD7dq0v3bN90JwD7JZ03JGHfvUm2p2-7zGRLi8QJ6p8GPJAg4s6KScvHb0r0gvZPYV2_LHOO5yyj7tNqFXr5G3eDi3l7Yid=w400-h300-k-no",
+    photo: null,
   },
 ];
 
@@ -150,16 +146,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero photo */}
-            <div className="relative overflow-hidden" style={{ height: "480px" }}>
-              <Image
-                src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAFrQO3F5MJJxbFIPqq6lXvGYVh4pCOL3MZNj45ZhNFevhqZlHd4CvWUyv4bkl3l8AiWf7-P0wJBvEtdSuZmr3qhRY_cYr4YgkLY=w800-h600-k-no"
-                alt="The Perfect Touch Painting — kitchen cabinet spray paint transformation"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority
-              />
+            {/* Hero accent — typography-led, no photo */}
+            <div className="relative overflow-hidden flex items-center justify-center" style={{ height: "480px", background: "var(--surface)" }}>
+              <p className="text-center px-8" style={{ fontFamily: "var(--font-instrument)", fontSize: "clamp(1.5rem, 3vw, 2.5rem)", color: "var(--text-secondary)", lineHeight: 1.4, maxWidth: "520px" }}>
+                &ldquo;The finished result exceeded what I had imagined. Absolutely worth every penny.&rdquo;
+              </p>
             </div>
           </div>
         </div>
@@ -338,14 +329,8 @@ export default function Home() {
                   &ldquo;{t.review}&rdquo;
                 </p>
                 <div className="flex items-center gap-3 pt-4" style={{ borderTop: "1px solid var(--border-dark)" }}>
-                  <div className="relative w-10 h-10 overflow-hidden shrink-0" style={{ borderRadius: "2px" }}>
-                    <Image
-                      src={t.photo}
-                      alt={`${t.name} — project photo`}
-                      fill
-                      className="object-cover"
-                      sizes="40px"
-                    />
+                  <div className="relative w-10 h-10 overflow-hidden shrink-0 flex items-center justify-center" style={{ borderRadius: "2px", background: "var(--accent)", color: "var(--bg)" }}>
+                    <span style={{ fontFamily: "var(--font-dmsans)", fontWeight: 700, fontSize: "0.85rem" }}>{t.name.charAt(0)}</span>
                   </div>
                   <div>
                     <p
