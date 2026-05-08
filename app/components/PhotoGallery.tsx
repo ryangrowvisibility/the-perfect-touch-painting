@@ -1,39 +1,70 @@
 "use client";
 
-import Image from "next/image";
-
-const photos = [
+const highlights = [
   {
-    src: "https://lh3.googleusercontent.com/gps-cs-s/APNQkAFrQO3F5MJJxbFIPqq6lXvGYVh4pCOL3MZNj45ZhNFevhqZlHd4CvWUyv4bkl3l8AiWf7-P0wJBvEtdSuZmr3qhRY_cYr4YgkLY=w800-h600-k-no",
-    alt: "The Perfect Touch Painting — kitchen cabinet spray painting transformation",
+    label: "Cabinet Spray Painting",
+    stat: "Showroom finish",
+    detail: "Kitchen and bathroom cabinets refinished with professional spray equipment — no brush marks, no drips, factory-level results.",
   },
   {
-    src: "https://lh3.googleusercontent.com/gps-cs-s/APNQkAE4FXYoTfqYiFiBxIFd1YiY4cXoRk7-T8Mj55qT1FUj-C4-OfIjTPaHQ0UGmwAZ1w3yoGUb_44P8vVsqAYFu9B5CJ4Y3UgqATbv=w800-h600-k-no",
-    alt: "The Perfect Touch Painting — interior painting project",
+    label: "Interior Painting",
+    stat: "Clean edges, every room",
+    detail: "Full interior repaints handled with precision prep, clean tape lines, and consistent coverage from ceiling to baseboard.",
   },
   {
-    src: "https://lh3.googleusercontent.com/gps-cs-s/APNQkAHbUVD7dq0v3bN90JwD7JZ03JGHfvUm2p2-7zGRLi8QJ6p8GPJAg4s6KScvHb0r0gvZPYV2_LHOO5yyj7tNqFXr5G3eDi3l7Yid=w800-h600-k-no",
-    alt: "The Perfect Touch Painting — finished spray cabinet work",
+    label: "Repeat Clients",
+    stat: "4.9★ · 29 reviews",
+    detail: "Customers come back for every repaint because the quality and care are consistent. Sara leads every project start to finish.",
   },
 ];
 
 export default function PhotoGallery() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-      {photos.map((photo, i) => (
+      {highlights.map((h, i) => (
         <div
           key={i}
-          className="relative overflow-hidden"
-          style={{ height: "280px" }}
+          className="flex flex-col justify-between p-8 overflow-hidden"
+          style={{
+            height: "280px",
+            background: i === 1 ? "var(--accent)" : "var(--surface)",
+            border: "1px solid var(--border)",
+          }}
         >
-          <Image
-            src={photo.src}
-            alt={photo.alt}
-            fill
-            className="object-cover transition-transform duration-500 hover:scale-105"
-            sizes="(max-width: 768px) 100vw, 33vw"
-            loading={i === 0 ? "eager" : "lazy"}
-          />
+          <p
+            style={{
+              fontFamily: "var(--font-dmsans)",
+              fontSize: "0.7rem",
+              letterSpacing: "0.12em",
+              textTransform: "uppercase",
+              color: i === 1 ? "var(--bg)" : "var(--text-secondary)",
+            }}
+          >
+            {h.label}
+          </p>
+          <div>
+            <p
+              style={{
+                fontFamily: "var(--font-instrument)",
+                fontSize: "1.25rem",
+                fontStyle: "italic",
+                color: i === 1 ? "var(--bg)" : "var(--text-primary)",
+                marginBottom: "0.5rem",
+              }}
+            >
+              {h.stat}
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-dmsans)",
+                fontSize: "0.875rem",
+                lineHeight: 1.6,
+                color: i === 1 ? "oklch(95% 0.005 50)" : "var(--text-secondary)",
+              }}
+            >
+              {h.detail}
+            </p>
+          </div>
         </div>
       ))}
     </div>
